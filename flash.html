@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ESP32-Cheap-Yellow-Display-Electronic-Shelf-Label-with-Google-Firebase WebFlash</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css?family=Exo:400,700');
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-weight: 300;
+        }
+
+        body {
+            font-family: 'Exo', 'Source Sans Pro', 'Roboto', 'Open Sans', 'Lato', 'Montserrat', 'Raleway', 'Poppins', 'Nunito', 'Ubuntu', 'Merriweather', 'Playfair Display', sans-serif;
+            color: white;
+            font-weight: 300;
+        }
+
+        body ::-webkit-input-placeholder {
+            font-family: 'Exo', 'Source Sans Pro', 'Roboto', 'Open Sans', 'Lato', 'Montserrat', 'Raleway', 'Poppins', 'Nunito', 'Ubuntu', 'Merriweather', 'Playfair Display', sans-serif;
+            color: white;
+            font-weight: 300;
+        }
+
+        body :-moz-placeholder {
+            font-family: 'Exo', 'Source Sans Pro', 'Roboto', 'Open Sans', 'Lato', 'Montserrat', 'Raleway', 'Poppins', 'Nunito', 'Ubuntu', 'Merriweather', 'Playfair Display', sans-serif;
+            color: white;
+            opacity: 1;
+            font-weight: 300;
+        }
+
+        body ::-moz-placeholder {
+            font-family: 'Exo', 'Source Sans Pro', 'Roboto', 'Open Sans', 'Lato', 'Montserrat', 'Raleway', 'Poppins', 'Nunito', 'Ubuntu', 'Merriweather', 'Playfair Display', sans-serif;
+            color: white;
+            opacity: 1;
+            font-weight: 300;
+        }
+
+        body :-ms-input-placeholder {
+            font-family: 'Exo', 'Source Sans Pro', 'Roboto', 'Open Sans', 'Lato', 'Montserrat', 'Raleway', 'Poppins', 'Nunito', 'Ubuntu', 'Merriweather', 'Playfair Display', sans-serif;
+            color: white;
+            font-weight: 300;
+        }
+
+        .custom-links a {
+            color: inherit;
+            text-decoration: underline;
+        }
+
+        .custom-links a:hover {
+            text-decoration: none;
+        }
+
+        .area {
+            background: #4e54c8;
+            background: -webkit-linear-gradient(to left, #8f94fb, #4e54c8);
+            width: 100%;
+            height: 100vh;
+            position: relative;
+        }
+
+        .circles {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        .circles li {
+            position: absolute;
+            display: block;
+            list-style: none;
+            width: 20px;
+            height: 20px;
+            background: rgba(255, 255, 255, 0.2);
+            animation: animate 25s linear infinite;
+            bottom: -150px;
+        }
+
+        .circles li:nth-child(1) {
+            left: 25%;
+            width: 80px;
+            height: 80px;
+            animation-delay: 0s;
+        }
+
+        .circles li:nth-child(2) {
+            left: 10%;
+            width: 20px;
+            height: 20px;
+            animation-delay: 2s;
+            animation-duration: 12s;
+        }
+
+        .circles li:nth-child(3) {
+            left: 70%;
+            width: 20px;
+            height: 20px;
+            animation-delay: 4s;
+        }
+
+        .circles li:nth-child(4) {
+            left: 40%;
+            width: 60px;
+            height: 60px;
+            animation-delay: 0s;
+            animation-duration: 18s;
+        }
+
+        .circles li:nth-child(5) {
+            left: 65%;
+            width: 20px;
+            height: 20px;
+            animation-delay: 0s;
+        }
+
+        .circles li:nth-child(6) {
+            left: 75%;
+            width: 110px;
+            height: 110px;
+            animation-delay: 3s;
+        }
+
+        .circles li:nth-child(7) {
+            left: 35%;
+            width: 150px;
+            height: 150px;
+            animation-delay: 7s;
+        }
+
+        .circles li:nth-child(8) {
+            left: 50%;
+            width: 25px;
+            height: 25px;
+            animation-delay: 15s;
+            animation-duration: 45s;
+        }
+
+        .circles li:nth-child(9) {
+            left: 20%;
+            width: 15px;
+            height: 15px;
+            animation-delay: 2s;
+            animation-duration: 35s;
+        }
+
+        .circles li:nth-child(10) {
+            left: 85%;
+            width: 150px;
+            height: 150px;
+            animation-delay: 0s;
+            animation-duration: 11s;
+        }
+
+        @keyframes animate {
+            0% {
+                transform: translateY(0) rotate(0deg);
+                opacity: 1;
+                border-radius: 0;
+            }
+
+            100% {
+                transform: translateY(-1000px) rotate(720deg);
+                opacity: 0;
+                border-radius: 50%;
+            }
+        }
+
+        .context {
+            width: 100%;
+            position: absolute;
+            top: 20%;
+            transform: translateY(-20%);
+        }
+
+        .context h1 {
+            text-align: center;
+            color: #fff;
+            font-size: 50px;
+        }
+
+        #main,
+        #notSupported {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .footer {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            padding: 10px 0;
+            text-align: center;
+        }
+
+        .footer p {
+            margin: 5px 0;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <div class="area">
+        <ul class="circles">
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+    </div>
+
+    <div class="context">
+        <h1>Midbar ESP32 CYD Firebase Edition WebFlash</h1>
+
+        <div id="main" style="display: none;">
+            <br>
+            <script type="module" src="https://unpkg.com/esp-web-tools@7.3.1/dist/web/install-button.js?module">
+            </script>
+            <esp-web-install-button id="installButton" manifest="webflash/manifest.json"></esp-web-install-button>
+            </br></br>
+            <span>NOTE: Make sure to close anything using your devices com port (e.g. Serial monitor)</span>
+        </div>
+        <div id="notSupported" style="display: none;">
+            Your browser does not support the Web Serial API. Try Chrome
+        </div>
+    </div>
+
+    <div class="footer">
+		<p><span class="custom-links"><a href="https://codepen.io/mohaiman/pen/MQqMyo">Pure Css Animated Background</a> by <a href="https://codepen.io/mohaiman">Mohammad Abdul Mohaiman</a></p></span>
+		<p><span class="custom-links"><a href="https://codepen.io/__e8e0f2257b/pen/NxMpGq">Animated Login Form</a> by <a href="https://codepen.io/__e8e0f2257b">Munsif Mujtaba</a></span></p>
+    </div>
+
+    <script>
+        if (navigator.serial) {
+            document.getElementById("notSupported").style.display = 'none';
+            document.getElementById("main").style.display = 'block';
+        } else {
+            document.getElementById("notSupported").style.display = 'block';
+            document.getElementById("main").style.display = 'none';
+        }
+    </script>
+</body>
+</html>

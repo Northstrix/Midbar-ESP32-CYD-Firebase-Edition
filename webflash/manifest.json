@@ -1,0 +1,15 @@
+{
+    "name": "Midbar ESP32 CYD Firebase Edition",
+    "new_install_prompt_erase": true,
+    "builds": [
+      {
+        "chipFamily": "ESP32",
+        "parts": [
+          { "path": "boot_app0.bin", "offset": 57344 },
+          { "path": "Firmware_for_ESP32.ino.bin", "offset": 65536 },
+          { "path": "Firmware_for_ESP32.ino.bootloader.bin", "offset": 4096 },
+          { "path": "Firmware_for_ESP32.ino.partitions.bin", "offset": 32768 }
+        ]
+      }
+    ]
+  }
