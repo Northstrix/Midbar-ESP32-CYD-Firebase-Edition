@@ -5301,6 +5301,7 @@ void hash_with_sha512() {
 }
 
 void Wifi_Init() {
+  tft.fillScreen(0x0000);
   tft.setTextSize(1);
   tft.setTextColor(0xffff);
   tft.setCursor(0, 5);
@@ -5473,7 +5474,7 @@ void requestAndSaveConfig() {
     clearDispForConfig();
     disp_centered_text("Confirm Values", 140);
     disp_centered_text("Check Serial Terminal", 160);
-    disp_centered_text("Enter Y/N to confirm", 180);
+    disp_centered_text("Enter Y to Confirm", 180);
     
     Serial.println("\nPlease confirm the following values:");
     Serial.println("SSID (Access Point Name): " + ssid);
@@ -5547,10 +5548,6 @@ void loadConfig() {
   Serial.println("API_KEY: " + API_KEY);
   Serial.println("DATABASE_URL: " + DATABASE_URL);
   Serial.println("Iterations: " + String(iterations));
-  
-  // Execute the Wifi_Init() and firebase_init() functions
-  Wifi_Init();
-  firebase_init();
 }
 
 // Helper function to filter string
@@ -5565,19 +5562,19 @@ String filterString(String input) {
 }
 
 void setup(void) {
+  tft.begin();
   tft.setRotation(3);
   tft.fillScreen(0x0000);
   tft.setTextSize(2);
+  delay(10);
   Serial.begin(115200);
   rec_d = false;
   k = 0;
-  tft.begin();
   if (isConfigStored()) {
     loadConfig();
   } else {
     requestAndSaveConfig();
   }
-  tft.fillScreen(0x0000);
   tft.setTextSize(1);
   Wifi_Init();
   firebase_init();
